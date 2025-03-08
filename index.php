@@ -1,37 +1,30 @@
 <?php get_header(); ?>
 
-<header id="home" class="header">
-    <div class="overlay text-white text-center">
-        <h1 class="display-2 font-weight-bold my-3">Food Hut</h1>
-        <h2 class="display-4 mb-5">Always fresh &amp; Delightful</h2>
-        <a class="btn btn-lg btn-primary" href="#gallary">View Our gallary</a>
-    </div>
-</header>
+<div id="blog" class="container-fluid bg-dark text-light py-5 text-center wow fadeIn">
+    <h2 class="section-title py-5"><?php the_title(); ?></h2>
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="foods" role="tabpanel" aria-labelledby="pills-home-tab">
+            <div class="row">
 
-<!--  About Section  -->
-<div id="about" class="container-fluid wow fadeIn" id="about" data-wow-duration="1.5s">
-    <div class="row">
-        <div class="col-lg-6 has-img-bg"></div>
-        <div class="col-lg-6">
-            <div class="row justify-content-center">
-                <div class="col-sm-8 py-5 my-5">
-                    <h2 class="mb-4">About Us</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, quisquam accusantium
-                        nostrum modi, nemo, officia veritatis ipsum facere maxime assumenda voluptatum enim! Labore
-                        maiores placeat impedit, vero sed est voluptas!Lorem ipsum dolor sit amet, consectetur
-                        adipisicing elit. Expedita alias dicta autem, maiores doloremque quo perferendis, ut obcaecati
-                        harum, <br><br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum necessitatibus
-                        iste,
-                        nulla recusandae porro minus nemo eaque cum repudiandae quidem voluptate magnam voluptatum?
-                        <br>Nobis, saepe sapiente omnis qui eligendi pariatur. quis voluptas. Assumenda facere adipisci
-                        quaerat. Illum doloremque quae omnis vitae.
-                    </p>
-                    <p><b>Lonsectetur adipisicing elit. Blanditiis aspernatur, ratione dolore vero asperiores
-                            explicabo.</b></p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos ab itaque modi, reprehenderit fugit
-                        soluta, molestias optio repellat incidunt iure sed deserunt nemo magnam rem explicabo vitae.
-                        Cum, nostrum, quidem.</p>
-                </div>
+                <?php if (have_posts()):
+                    while (have_posts()):
+                        the_post(); ?>
+
+                        <div class="col-md-4 my-3 my-md-0">
+                            <a href="#" class="card bg-transparent border">
+                                <img src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title_attribute(); ?>"
+                                    class="rounded-0 card-img-top mg-responsive">
+                                <div class="card-body">
+                                    <h1 class="text-center mb-4"><a href="#" class="badge badge-primary">$
+                                            <?php echo get_field('pricing'); ?></a></h1>
+                                    <h4 class="pt20 pb20"><?php the_title(); ?> </h4>
+                                    <p class="text-white"><?php the_excerpt(); ?> </p>
+                                </div>
+                            </a>
+                        </div>
+
+                    <?php endwhile; endif; ?>
+
             </div>
         </div>
     </div>

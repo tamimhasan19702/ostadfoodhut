@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-$ostadlogo = get_theme_mod('ostadfood_logo', get_template_directory_uri() . 'assets/imgs/logo.svg');
+$ostadlogo = get_theme_mod('ostadfood_logo', get_template_directory_uri() . '/assets/imgs/logo.svg');
 $ostadheadertext = get_theme_mod('ostadfood_logo_alt_text', get_bloginfo('name'));
 
 ?>
@@ -32,37 +32,37 @@ $ostadheadertext = get_theme_mod('ostadfood_logo_alt_text', get_bloginfo('name')
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#home">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#about">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="menu.html">Menu</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#book-table">Book-Table</a>
-                </li>
-            </ul>
-            <a class="navbar-brand m-auto" href="index.html">
-                <?php echo '<img src="' . $ostadlogo . '" class="brand-img" alt="">' ?>
-                <span class="brand-txt"><?php echo $ostadheadertext; ?></span>
-            </a>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="blog.html">Blog<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#testmonial">Reviews</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact Us</a>
-                </li>
-                <li class="nav-item">
-                    <a href="components.html" class="btn btn-primary ml-xl-4">Components</a>
-                </li>
-            </ul>
+            <?php
+
+            if (has_nav_menu('primary-menu')) {
+                wp_nav_menu(array(
+                    'theme_location' => 'primary-menu',
+                    'container' => false,
+                    'menu_class' => 'navbar-nav',
+                    'walker' => new Ostadfood_walker_menu(),
+                ));
+            }
+            ?>
+            <?php if (!empty($ostadheadertext) && !empty($ostadlogo)): ?>
+                <a class="navbar-brand m-auto" href="<?php echo esc_url(home_url('/')); ?>">
+                    <?php if (!empty($ostadlogo)): ?>
+                        <img src="<?php echo esc_url($ostadlogo); ?>" class="brand-img"
+                            alt="<?php echo esc_attr($ostadheadertext); ?>">
+                    <?php endif; ?>
+                    <?php if (!empty($ostadheadertext)): ?>
+                        <span class="brand-txt"><?php echo esc_html($ostadheadertext); ?></span>
+                    <?php endif; ?>
+                </a>
+            <?php endif; ?>
+            <?php
+            if (has_nav_menu('secondary-menu')) {
+                wp_nav_menu(array(
+                    'theme_location' => 'secondary-menu',
+                    'container' => false,
+                    'menu_class' => 'navbar-nav',
+                    'walker' => new Ostadfood_walker_menu()
+                ));
+            }
+            ?>
         </div>
     </nav>

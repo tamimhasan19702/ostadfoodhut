@@ -3,46 +3,251 @@
 function register_custom_menus()
 {
     register_nav_menus(array(
-        'primary-menu' => __('Venue Primary Menu'),
-        'secondary-menu' => __('Venue Secondary Menu'),
+        'primary-menu' => __('Ostadfood Primary Menu'),
+        'secondary-menu' => __('Ostadfood Secondary Menu'),
 
     ));
 }
 add_action('after_setup_theme', 'register_custom_menus');
 
 
-function venue_register_widget()
+function ostadfood_kses($content = '')
 {
-    // footer - 1
-    register_sidebar(array(
-        'name' => __('Footer Widget 1', 'venue'),
-        'id' => 'footer_widget_1',
-        'description' => __('Footer widget area', 'venue'),
-        'before_widget' => '<div id="%1$s" class="about-veno %2$s">',
-        'after_widget' => '</div>',
-        'before_title' => '<h3 class="widget-title">',
-        'after_title' => '</h3>'
-    ));
-    // footer - 2
-    register_sidebar(array(
-        'name' => __('Footer Widget 2', 'venue'),
-        'id' => 'footer_widget_2',
-        'description' => __('Footer widget area', 'venue'),
-        'before_widget' => '<div id="%1$s" class="useful-links %2$s">',
-        'after_widget' => '</div>',
-        'before_title' => '<div class="footer-heading"><h4 >',
-        'after_title' => '</h4></div>'
-    ));
-    // footer - 3
-    register_sidebar(array(
-        'name' => __('Footer Widget 3', 'venue'),
-        'id' => 'footer_widget_3',
-        'description' => __('Footer widget area', 'venue'),
-        'before_widget' => '<div id="%1$s" class="contact-info %2$s">',
-        'after_widget' => '</div>',
-        'before_title' => '<div class="footer-heading"><h4 >',
-        'after_title' => '</h4></div>'
-    ));
-}
+    $allowed_html = [
 
-add_action('widgets_init', 'venue_register_widget');
+        'span' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+        ],
+        'i' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+        ],
+        'a' => [
+            'class' => [],
+            'id' => [],
+            'href' => [],
+            'style' => [],
+            'target' => [],
+            'rel' => [],
+        ],
+        'br' => [
+        ],
+        'p' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+        ],
+        'h1' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+        ],
+        'h2' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+        ],
+        'h3' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+        ],
+        'h4' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+        ],
+        'h5' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+        ],
+        'h6' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+        ],
+        'img' => [
+            'src' => [],
+            'alt' => [],
+            'class' => [],
+            'id' => [],
+            'style' => [],
+        ],
+        'ul' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+        ],
+        'li' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+        ],
+        'ol' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+        ],
+        'blockquote' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+        ],
+        'pre' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+        ],
+        'code' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+        ],
+        'table' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+        ],
+        'tr' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+        ],
+        'td' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+        ],
+        'th' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+        ],
+        'dl' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+        ],
+        'dt' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+        ],
+        'dd' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+        ],
+        'video' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+            'autoplay' => [],
+            'controls' => [],
+            'loop' => [],
+            'muted' => [],
+            'playsinline' => [],
+            'preload' => [],
+            'src' => [],
+            'poster' => [],
+            'width' => [],
+            'height' => [],
+        ],
+        'source' => [
+            'src' => [],
+            'type' => [],
+            'media' => [],
+            'sizes' => [],
+        ],
+        'strong' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+        ],
+        'b' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+        ],
+        'em' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+        ],
+        'i' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+        ],
+        'div' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+        ],
+        'button' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+        ],
+        'input' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+            'type' => [],
+            'name' => [],
+            'value' => [],
+            'placeholder' => [],
+        ],
+        'textarea' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+            'name' => [],
+            'placeholder' => [],
+        ],
+        'select' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+            'name' => [],
+        ],
+        'option' => [
+            'class' => [],
+            'id' => [],
+            'style' => [],
+            'value' => [],
+        ],
+        'svg' => [
+            'xmlns' => [],
+            'fill' => [],
+            'viewbox' => [],
+            'role' => [],
+            'aria-hidden' => [],
+            'focusable' => [],
+            'height' => [],
+            'width' => [],
+        ],
+        'path' => [
+            'd' => [],
+            'fill' => [],
+        ],
+        'iframe' => [
+            'src' => [],
+            'width' => [],
+            'height' => [],
+            'frameborder' => [],
+            'allowfullscreen' => [],
+        ],
+        'strong' => [
+            'class' => [],
+            'id' => [],
+
+        ],
+    ];
+
+    return wp_kses($content, $allowed_html);
+}

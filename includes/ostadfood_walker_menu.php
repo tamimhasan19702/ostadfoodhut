@@ -1,12 +1,12 @@
 <?php
 
-class Venue_walker_menu extends Walker_Nav_Menu
+class Ostadfood_walker_menu extends Walker_Nav_Menu
 {
     // Start the submenu level
     function start_lvl(&$output, $depth = 0, $args = null)
     {
         $indent = str_repeat("\t", $depth);
-        $output .= "\n$indent<ul class=\"sub-menu\">\n"; // Add the sub-menu class
+        $output .= "\n$indent<ul class=\"sub-menu navbar-nav\">\n"; // Add the sub-menu class
     }
 
     // Start the menu item
@@ -15,9 +15,9 @@ class Venue_walker_menu extends Walker_Nav_Menu
         $indent = ($depth) ? str_repeat("\t", $depth) : '';
 
         $classes = empty($item->classes) ? array() : (array) $item->classes;
-        $classes[] = 'menu-item-' . $item->ID;
+        $classes[] = 'nav-item'; // Add the nav-item class
 
-        // Add 'active' class if the item is current
+        // Always add 'active' class if the item is current or an ancestor
         if ($item->current || $item->current_item_ancestor) {
             $classes[] = 'active';
         }
@@ -35,6 +35,9 @@ class Venue_walker_menu extends Walker_Nav_Menu
         $atts['target'] = !empty($item->target) ? $item->target : '';
         $atts['rel'] = !empty($item->xfn) ? $item->xfn : '';
         $atts['href'] = !empty($item->url) ? $item->url : '';
+
+        // Add the nav-link class to the link
+        $atts['class'] = 'nav-link';
 
         $atts = apply_filters('nav_menu_link_attributes', $atts, $item, $args);
 
