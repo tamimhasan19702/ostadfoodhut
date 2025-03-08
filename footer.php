@@ -1,10 +1,3 @@
-<?php
-
-if (!defined('ABSPATH'))
-    exit;
-
-?>
-
 <!-- page footer  -->
 <div class="container-fluid bg-dark text-light has-height-md middle-items border-top text-center wow fadeIn">
     <div class="row">
@@ -28,10 +21,8 @@ if (!defined('ABSPATH'))
 </div>
 <!-- end of page footer -->
 
-<!-- core  -->
-<?php
-wp_footer();
-?>
+<?php wp_footer(); ?>
+
 
 </body>
 

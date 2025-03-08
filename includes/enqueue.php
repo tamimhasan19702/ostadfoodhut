@@ -5,29 +5,26 @@ if (!defined('ABSPATH')) {
 }
 
 
-if (!function_exists('ostadfood_scripts')) {
+if (!function_exists('ostadfood_enqueue_scripts')) {
 
 
-    function ostadfood_scripts()
+    function ostadfood_enqueue_scripts()
     {
 
         wp_enqueue_style('themify-icons', get_template_directory_uri() . '/assets/vendors/themify-icons/css/themify-icons.css');
-        wp_enqueue_style('animate', get_template_directory_uri() . '/assets/vendors/animate/animate.css');
-        wp_enqueue_style('foodhut', get_template_directory_uri() . '/assets/css/foodhut.css');
+        wp_enqueue_style('animate-css', get_template_directory_uri() . '/assets/vendors/animate/animate.css');
+        wp_enqueue_style('foodhut-main-styles', get_template_directory_uri() . '/assets/css/foodhut.css');
 
-        wp_enqueue_script('bootstrap', get_template_directory_uri() . '/assets/vendors/bootstrap/bootstrap.bundle.js', array('jquery'), null, true);
-
-        wp_enqueue_script('bootstrap-affix', get_template_directory_uri() . '/assets/vendors/bootstrap/bootstrap.affix.js', array('bootstrap'), null, true);
-
+        wp_enqueue_script('jquery', get_template_directory_uri() . '/assets/vendors/jquery/jquery-3.4.1.js', array(), null, true);
+        wp_enqueue_script('bootstrap-bundle', get_template_directory_uri() . '/assets/vendors/bootstrap/bootstrap.bundle.js', array('jquery'), null, true);
+        wp_enqueue_script('bootstrap-affix', get_template_directory_uri() . '/assets/vendors/bootstrap/bootstrap.affix.js', array('jquery'), null, true);
         wp_enqueue_script('wow', get_template_directory_uri() . '/assets/vendors/wow/wow.js', array(), null, true);
-
         wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCtme10pzgKSPeJVJrG1O3tjR6lk98o4w8&callback=initMap', array(), null, true);
-
-        wp_enqueue_script('foodhut', get_template_directory_uri() . '/assets/js/foodhut.js', array('jquery', 'wow', 'bootstrap-affix'), null, true);
+        wp_enqueue_script('foodhut-js', get_template_directory_uri() . '/assets/js/foodhut.js', array('jquery'), null, true);
 
     }
 
-    add_action('wp_enqueue_scripts', 'ostadfood_scripts');
+    add_action('wp_enqueue_scripts', 'ostadfood_enqueue_scripts');
 
 }
 

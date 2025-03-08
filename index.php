@@ -1,11 +1,4 @@
-<?php
-
-if (!defined('ABSPATH'))
-    exit;
-
-get_header();
-
-?>
+<?php get_header(); ?>
 
 <header id="home" class="header">
     <div class="overlay text-white text-center">

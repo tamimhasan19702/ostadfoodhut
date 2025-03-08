@@ -1,26 +1,29 @@
 <?php
+
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
+
+$ostadlogo = get_theme_mod('ostadfood_logo', get_template_directory_uri() . 'assets/imgs/logo.svg');
+$ostadheadertext = get_theme_mod('ostadfood_logo_alt_text', get_bloginfo('name'));
+
 ?>
 
+
 <!DOCTYPE html>
-<html lang="<?php echo get_bloginfo('language'); ?>">
+<html <?php language_attributes(); ?>>
 
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=<?php echo esc_attr('no'); ?>">
-    <meta name="description" content="<?php echo esc_attr(get_bloginfo('description')); ?>">
-    <meta name="author" content="<?php echo esc_attr(get_bloginfo('name')); ?>">
-    <title>FoodHut</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="<?php bloginfo('description'); ?>">
+    <meta name="author" content="Devcrud">
+    <title><?php the_title(); ?></title>
 
     <?php wp_head(); ?>
-
-
 </head>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home" <?php body_class(); ?>>
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
 
     <!-- Navbar -->
     <nav class="custom-navbar navbar navbar-expand-lg navbar-dark fixed-top" data-spy="affix" data-offset-top="10">
@@ -44,8 +47,8 @@ if (!defined('ABSPATH')) {
                 </li>
             </ul>
             <a class="navbar-brand m-auto" href="index.html">
-                <img src="assets/imgs/logo.svg" class="brand-img" alt="">
-                <span class="brand-txt">Food Hut</span>
+                <?php echo '<img src="' . $ostadlogo . '" class="brand-img" alt="">' ?>
+                <span class="brand-txt"><?php echo $ostadheadertext; ?></span>
             </a>
             <ul class="navbar-nav">
                 <li class="nav-item">
