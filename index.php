@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <div id="blog" class="container-fluid bg-dark text-light py-5 text-center wow fadeIn">
-    <h2 class="section-title py-5"><?php the_title(); ?></h2>
+    <h2 class="section-title py-5"><?php echo get_the_title();  ?></h2>
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="foods" role="tabpanel" aria-labelledby="pills-home-tab">
             <div class="row">

@@ -44,15 +44,15 @@ $ostadheadertext = get_theme_mod('ostadfood_logo_alt_text', get_bloginfo('name')
             }
             ?>
             <?php if (!empty($ostadheadertext) && !empty($ostadlogo)): ?>
-                <a class="navbar-brand m-auto" href="<?php echo esc_url(home_url('/')); ?>">
-                    <?php if (!empty($ostadlogo)): ?>
-                        <img src="<?php echo esc_url($ostadlogo); ?>" class="brand-img"
-                            alt="<?php echo esc_attr($ostadheadertext); ?>">
-                    <?php endif; ?>
-                    <?php if (!empty($ostadheadertext)): ?>
-                        <span class="brand-txt"><?php echo esc_html($ostadheadertext); ?></span>
-                    <?php endif; ?>
-                </a>
+            <a class="navbar-brand m-auto" href="<?php echo esc_url(home_url('/')); ?>">
+                <?php if (!empty($ostadlogo)): ?>
+                <img src="<?php echo esc_url($ostadlogo); ?>" class="brand-img"
+                    alt="<?php echo esc_attr($ostadheadertext); ?>">
+                <?php endif; ?>
+                <?php if (!empty($ostadheadertext)): ?>
+                <span class="brand-txt"><?php echo esc_html($ostadheadertext); ?></span>
+                <?php endif; ?>
+            </a>
             <?php endif; ?>
             <?php
             if (has_nav_menu('secondary-menu')) {
@@ -64,5 +64,7 @@ $ostadheadertext = get_theme_mod('ostadfood_logo_alt_text', get_bloginfo('name')
                 ));
             }
             ?>
+
+
         </div>
     </nav>
