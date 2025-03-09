@@ -251,3 +251,36 @@ function ostadfood_kses($content = '')
 
     return wp_kses($content, $allowed_html);
 }
+
+
+if (function_exists('acf_add_local_field_group')) {
+    acf_add_local_field_group(array(
+        'key' => 'group_post_fields',
+        'title' => 'Post Pricing Field',
+        'fields' => array(
+            array(
+                'key' => 'field_pricing', 
+                'label' => 'Pricing', 
+                'name' => 'pricing', 
+                'type' => 'text', 
+                'instructions' => 'Enter the price (e.g., $29.99)',
+                'required' => 0, 
+                'placeholder' => '$0.00', 
+            )
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'post',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+    ));
+}
